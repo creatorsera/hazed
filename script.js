@@ -1,66 +1,47 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const tweetButton = document.getElementById('tweetButton');
-    const usernameInput = document.getElementById('usernameInput');
-    const tweetInput = document.getElementById('tweetInput');
-    const tweetsList = document.getElementById('tweetsList');
-    const charCount = document.getElementById('charCount');
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const profilePicInput = document.getElementById('profilePic');
-    let profilePicUrl = '';
+document.addEventListener("DOMContentLoaded", function () {
+    const usernameInput = document.getElementById("usernameInput");
+    const tweetInput = document.getElementById("tweetInput");
+    const tweetButton = document.getElementById("tweetButton");
+    const tweetsList = document.getElementById("tweetsList");
+    const profilePicInput = document.getElementById("profilePicInput");
+    const profilePicPreview = document.getElementById("profilePicPreview");
 
-    // Load Dark Mode
-    if (localStorage.getItem('darkMode') === 'enabled') {
-        document.body.classList.add('dark-mode');
-    }
+    let profilePicUrl = "default-avatar.png"; // Default profile pic
 
-    darkModeToggle.addEventListener('click', function () {
-        document.body.classList.toggle('dark-mode');
-        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
-    });
-
-    // Profile Picture Upload
-    profilePicInput.addEventListener('change', function (event) {
+    // Upload Profile Picture
+    profilePicInput.addEventListener("change", function (event) {
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onload = function (e) {
                 profilePicUrl = e.target.result;
+                profilePicPreview.src = profilePicUrl;
             };
             reader.readAsDataURL(file);
         }
     });
 
-    tweetButton.addEventListener('click', function () {
+    // Tweet Function
+    tweetButton.addEventListener("click", function () {
         const username = usernameInput.value.trim();
         const tweetText = tweetInput.value.trim();
-        const timestamp = new Date().toLocaleString();
-        const avatar = profilePicUrl || `https://i.pravatar.cc/40?u=${username}`;
-
         if (username && tweetText) {
-            const tweetData = { username, tweetText, timestamp, avatar, likes: 0 };
-            addTweetToUI(tweetData);
-            tweetInput.value = '';
-            charCount.textContent = '0/280';
+            addTweetToUI({ username, tweetText, profilePicUrl, likes: 0 });
+            tweetInput.value = "";
         }
     });
 
-    tweetInput.addEventListener('input', function () {
-        charCount.textContent = `${tweetInput.value.length}/280`;
-        charCount.style.color = tweetInput.value.length > 280 ? 'red' : 'black';
-    });
-
     function addTweetToUI(tweetData) {
-        const tweetItem = document.createElement('li');
-        tweetItem.className = 'tweet';
+        const tweetItem = document.createElement("li");
+        tweetItem.className = "tweet";
+
         tweetItem.innerHTML = `
-            <img src="${tweetData.avatar}" class="profile-pic" alt="Avatar">
+            <img src="${tweetData.profilePicUrl}" class="profile-pic">
             <div class="tweet-content">
-                <div class="tweet-header">
-                    <strong>${tweetData.username}</strong> - <small>${tweetData.timestamp}</small>
-                </div>
+                <strong>${tweetData.username}</strong> <br>
                 <p class="tweet-text">${tweetData.tweetText}</p>
                 <div class="tweet-buttons">
-                    <button class="like-button">❤️ ${tweetData.likes}</button>
+                    <button class="like-button">❤️ 0</button>
                     <button class="edit-button">Edit</button>
                     <button class="delete-button">Delete</button>
                 </div>
@@ -68,63 +49,25 @@ document.addEventListener('DOMContentLoaded', function () {
         `;
         tweetsList.prepend(tweetItem);
 
-        const likeButton = tweetItem.querySelector('.like-button');
-        const editButton = tweetItem.querySelector('.edit-button');
-        const deleteButton = tweetItem.querySelector('.delete-button');
-        const tweetTextElement = tweetItem.querySelector('.tweet-text');
-
-        likeButton.addEventListener('click', function () {
-            tweetData.likes++;
-            likeButton.textContent = `❤️ ${tweetData.likes}`;
-            likeButton.classList.add('liked');
+        // Like Button
+        const likeButton = tweetItem.querySelector(".like-button");
+        likeButton.addEventListener("click", function () {
+            let likes = parseInt(likeButton.innerText.split(" ")[1]) + 1;
+            likeButton.innerHTML = `❤️ ${likes}`;
+            likeButton.classList.add("liked");
         });
 
-        editButton.addEventListener('click', function () {
-            const newText = prompt('Edit your tweet:', tweetData.tweetText);
-            if (newText !== null) {
-                tweetData.tweetText = newText;
-                tweetTextElement.textContent = newText;
-            }
+        // Edit Button
+        const editButton = tweetItem.querySelector(".edit-button");
+        editButton.addEventListener("click", function () {
+            tweetInput.value = tweetData.tweetText;
+            tweetItem.remove();
         });
 
-        deleteButton.addEventListener('click', function () {
+        // Delete Button
+        const deleteButton = tweetItem.querySelector(".delete-button");
+        deleteButton.addEventListener("click", function () {
             tweetItem.remove();
         });
     }
-const tweetImageInput = document.getElementById('tweetImageInput');
-
-tweetImageInput.addEventListener('change', function (event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            tweetImageUrl = e.target.result;
-        };
-        reader.readAsDataURL(file);
-    }
-});
-
-function addTweetToUI(tweetData) {
-    const tweetItem = document.createElement('li');
-    tweetItem.className = 'tweet';
-
-    let imageHTML = tweetData.image ? `<img src="${tweetData.image}" class="tweet-image">` : '';
-
-    tweetItem.innerHTML = `
-        <img src="${tweetData.avatar}" class="profile-pic" alt="Avatar">
-        <div class="tweet-content">
-            <div class="tweet-header">
-                <strong>${tweetData.username}</strong> - <small>${tweetData.timestamp}</small>
-            </div>
-            <p class="tweet-text">${tweetData.tweetText}</p>
-            ${imageHTML}
-            <div class="tweet-buttons">
-                <button class="like-button">❤️ ${tweetData.likes}</button>
-                <button class="edit-button">Edit</button>
-                <button class="delete-button">Delete</button>
-            </div>
-        </div>
-    `;
-    tweetsList.prepend(tweetItem);
-}
 });
