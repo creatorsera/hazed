@@ -9,9 +9,16 @@
 <body>
     <div class="container">
         <h1>Tweet Clone</h1>
+        
+        <div class="profile-section">
+            <label for="profilePic">Upload Profile Picture:</label>
+            <input type="file" id="profilePic" accept="image/*">
+        </div>
+        
         <input type="text" id="usernameInput" placeholder="Enter your username">
         <textarea id="tweetInput" placeholder="What's happening?" maxlength="280"></textarea>
         <p id="charCount">0/280</p>
+        
         <button id="tweetButton">Tweet</button>
         <button id="darkModeToggle">Toggle Dark Mode</button>
         
