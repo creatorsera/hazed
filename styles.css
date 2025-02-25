@@ -1,14 +1,19 @@
+/* Global styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #f5f8fa;
     color: #14171a;
     margin: 0;
-    padding: 20px;
+    padding: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
+/* Container */
 .container {
+    width: 100%;
     max-width: 600px;
     background: white;
     padding: 20px;
@@ -16,99 +21,104 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    text-align: center;
-    color: #2ecc71;
-}
-
-/* Profile Upload */
-.profile-upload {
+/* Header */
+header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    color: #2ecc71;
+    font-size: 24px;
+}
+
+/* Dark Mode Button */
+#darkModeToggle {
+    background: none;
+    border: none;
+    font-size: 20px;
     cursor: pointer;
-    margin-bottom: 10px;
+    transition: transform 0.2s;
 }
 
-.profile-upload img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #2ecc71;
+#darkModeToggle:hover {
+    transform: scale(1.1);
 }
 
-.profile-upload input {
-    display: none;
-}
-
-/* Tweet Input */
+/* Input Fields */
 input, textarea {
     width: 100%;
     border: 1px solid #e1e8ed;
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 10px;
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-button {
+input:focus, textarea:focus {
+    border-color: #2ecc71;
+    outline: none;
+}
+
+/* Tweet Button */
+#tweetButton {
     width: 100%;
     padding: 10px;
     background-color: #2ecc71;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 15px;
     font-size: 16px;
     cursor: pointer;
-    transition: background 0.3s;
+    margin-top: 10px;
+    transition: background-color 0.3s;
 }
 
-button:hover {
+#tweetButton:hover {
     background-color: #27ae60;
 }
 
-/* Tweet Card */
+/* Tweet List */
+#tweetsList {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
 .tweet {
-    display: flex;
-    align-items: flex-start;
-    background: white;
-    padding: 15px;
-    margin: 10px 0;
+    background: #e1e8ed;
+    padding: 10px;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
+    margin-bottom: 10px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
 }
 
-.tweet img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
+.tweet:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.tweet .tweet-content {
-    flex: 1;
+/* Dark Mode */
+.dark-mode {
+    background-color: #15202b;
+    color: white;
 }
 
-.tweet .tweet-buttons {
-    display: flex;
-    gap: 5px;
+.dark-mode .container {
+    background: #192734;
 }
 
-.tweet .like-button.liked {
-    color: red;
-    transform: scale(1.1);
+.dark-mode input, .dark-mode textarea {
+    background: #22303c;
+    color: white;
+    border-color: #8899a6;
 }
 
-/* Hashtags & Mentions */
-.mention {
-    color: #3498db;
-    font-weight: bold;
-    cursor: pointer;
+.dark-mode #tweetButton {
+    background-color: #1da1f2;
 }
 
-.hashtag {
-    color: #e0245e;
-    font-weight: bold;
-    cursor: pointer;
+.dark-mode .tweet {
+    background: #22303c;
 }
