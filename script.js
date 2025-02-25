@@ -91,4 +91,40 @@ document.addEventListener('DOMContentLoaded', function () {
             tweetItem.remove();
         });
     }
+const tweetImageInput = document.getElementById('tweetImageInput');
+
+tweetImageInput.addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            tweetImageUrl = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+function addTweetToUI(tweetData) {
+    const tweetItem = document.createElement('li');
+    tweetItem.className = 'tweet';
+
+    let imageHTML = tweetData.image ? `<img src="${tweetData.image}" class="tweet-image">` : '';
+
+    tweetItem.innerHTML = `
+        <img src="${tweetData.avatar}" class="profile-pic" alt="Avatar">
+        <div class="tweet-content">
+            <div class="tweet-header">
+                <strong>${tweetData.username}</strong> - <small>${tweetData.timestamp}</small>
+            </div>
+            <p class="tweet-text">${tweetData.tweetText}</p>
+            ${imageHTML}
+            <div class="tweet-buttons">
+                <button class="like-button">❤️ ${tweetData.likes}</button>
+                <button class="edit-button">Edit</button>
+                <button class="delete-button">Delete</button>
+            </div>
+        </div>
+    `;
+    tweetsList.prepend(tweetItem);
+}
 });
