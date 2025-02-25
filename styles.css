@@ -1,40 +1,54 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #f5f8fa;
     color: #14171a;
     margin: 0;
     padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .container {
     max-width: 600px;
-    margin: auto;
     background: white;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Profile Picture Upload */
-.profile-section {
+h1 {
     text-align: center;
-    margin-bottom: 15px;
+    color: #2ecc71;
 }
 
-.profile-section input {
-    display: block;
-    margin: auto;
+/* Profile Upload */
+.profile-upload {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.profile-upload img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #2ecc71;
+}
+
+.profile-upload input {
+    display: none;
 }
 
 /* Tweet Input */
-input[type="text"], textarea {
+input, textarea {
     width: 100%;
     border: 1px solid #e1e8ed;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 10px;
     font-size: 16px;
     margin-bottom: 10px;
-    transition: border-color 0.3s;
 }
 
 button {
@@ -43,10 +57,10 @@ button {
     background-color: #2ecc71;
     color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background 0.3s;
 }
 
 button:hover {
@@ -62,49 +76,39 @@ button:hover {
     margin: 10px 0;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: relative;
+    transition: transform 0.2s ease-in-out;
 }
 
-.profile-pic {
+.tweet img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    object-fit: cover;
     margin-right: 10px;
 }
 
-.tweet-content {
-    flex-grow: 1;
+.tweet .tweet-content {
+    flex: 1;
 }
 
-.tweet-buttons {
+.tweet .tweet-buttons {
     display: flex;
-    gap: 10px;
-    margin-top: 5px;
+    gap: 5px;
 }
 
-.like-button, .edit-button, .delete-button {
-    border: none;
+.tweet .like-button.liked {
+    color: red;
+    transform: scale(1.1);
+}
+
+/* Hashtags & Mentions */
+.mention {
+    color: #3498db;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 14px;
-    padding: 5px 10px;
-    border-radius: 5px;
 }
 
-.like-button { color: #e0245e; }
-.edit-button { background-color: #3498db; color: white; }
-.delete-button { background-color: #e74c3c; color: white; }
-
-/* Dark Mode */
-.dark-mode {
-    background-color: #141d26;
-    color: white;
-}
-
-.dark-mode .container {
-    background-color: #1e2a38;
-}
-
-.dark-mode .tweet {
-    background-color: #23303f;
+.hashtag {
+    color: #e0245e;
+    font-weight: bold;
+    cursor: pointer;
 }
