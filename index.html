@@ -5,23 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tweet Sera</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <button id="darkModeToggle">🌙</button>
+
     <div class="container">
-        <header>
-            <h1>Tweet Sera</h1>
-            <button id="darkModeToggle">🌙</button>
-        </header>
+        <h1>Tweet Sera</h1>
 
-        <div class="tweet-box">
-            <input type="text" id="usernameInput" placeholder="Enter your username">
-            <textarea id="tweetInput" placeholder="What's happening?"></textarea>
-            <button id="tweetButton">Tweet</button>
+        <!-- Profile Picture Upload -->
+        <input type="file" id="profilePicInput" accept="image/*">
+        <img id="profilePicPreview" class="profile-pic" src="default-avatar.png" alt="Profile Picture">
+
+        <input type="text" id="usernameInput" placeholder="Enter your username">
+        <textarea id="tweetInput" placeholder="What's happening?" maxlength="280"></textarea>
+        <button id="tweetButton">Tweet</button>
+
+        <div id="tweetsContainer">
+            <ul id="tweetsList"></ul>
         </div>
-
-        <ul id="tweetsList"></ul>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
