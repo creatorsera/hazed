@@ -1,19 +1,11 @@
-/* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-
+/* General Styles */
 body {
     font-family: 'Inter', sans-serif;
     background-color: #f5f8fa;
     color: #14171a;
     margin: 0;
     padding: 20px;
-    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-/* Dark Mode Styles */
-body.dark-mode {
-    background-color: #1c1c1c;
-    color: #ffffff;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Container */
@@ -24,56 +16,56 @@ body.dark-mode {
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: background 0.3s ease-in-out;
-}
-
-.dark-mode .container {
-    background: #2a2a2a;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 h1 {
-    text-align: center;
     color: #2ecc71;
+    margin: 0;
 }
 
 /* Dark Mode Button */
 #darkModeToggle {
-    position: absolute;
-    top: 20px;
-    right: 20px;
     background: none;
     border: none;
+    font-size: 20px;
     cursor: pointer;
-    font-size: 18px;
-    color: #2ecc71;
-    transition: color 0.3s ease;
-}
-
-.dark-mode #darkModeToggle {
-    color: #ffffff;
 }
 
 /* Input Fields */
-input[type="text"], textarea {
+input[type="text"], textarea, input[type="file"] {
     width: 100%;
     border: 1px solid #e1e8ed;
     border-radius: 20px;
-    padding: 12px;
+    padding: 10px;
     font-size: 16px;
     margin-bottom: 10px;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s ease;
 }
 
-input[type="text"]:focus, textarea:focus {
+input:focus, textarea:focus {
     border-color: #2ecc71;
     outline: none;
 }
 
-/* Buttons */
+/* Character Counter */
+#charCount {
+    font-size: 14px;
+    float: right;
+    color: gray;
+}
+
+/* Tweet Button */
 button {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     background-color: #2ecc71;
     color: white;
     border: none;
@@ -87,62 +79,60 @@ button:hover {
     background-color: #27ae60;
 }
 
-/* Tweets */
+/* Tweets List */
 .tweet {
     background: #e1e8ed;
     margin: 10px 0;
-    padding: 12px;
+    padding: 15px;
     border-radius: 10px;
     position: relative;
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
 }
 
-.dark-mode .tweet {
-    background: #333;
-}
-
-/* Profile Image */
+/* Profile Pic */
 .profile-pic {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #2ecc71;
+    margin-right: 10px;
 }
 
-/* Edit & Delete Buttons */
-.edit-button, .delete-button {
-    background-color: #3498db;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    padding: 5px 10px;
-    cursor: pointer;
+/* Verified Badge */
+.verified {
+    color: #1DA1F2;
+    font-size: 16px;
     margin-left: 5px;
 }
 
-.edit-button:hover {
-    background-color: #2980b9;
+/* Dark Mode */
+.dark-mode {
+    background-color: #15202b;
+    color: #ffffff;
 }
 
-.delete-button {
-    background-color: #e74c3c;
+.dark-mode .container {
+    background-color: #192734;
+    box-shadow: none;
 }
 
-.delete-button:hover {
-    background-color: #c0392b;
+.dark-mode input, 
+.dark-mode textarea {
+    background-color: #22303c;
+    color: white;
+    border: 1px solid #3a5060;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-    .container {
-        width: 90%;
-    }
+.dark-mode .tweet {
+    background: #22303c;
+}
 
-    #darkModeToggle {
-        top: 15px;
-        right: 15px;
-    }
+.dark-mode button {
+    background-color: #1DA1F2;
+}
+
+.dark-mode button:hover {
+    background-color: #0d8de0;
 }
