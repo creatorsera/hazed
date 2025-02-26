@@ -1,21 +1,20 @@
-/* General Styles */
 body {
     font-family: 'Inter', sans-serif;
     background-color: #f5f8fa;
-    color: #14171a;
+    color: #48c9b0;
     margin: 0;
-    padding: 20px;
+    padding: 120px;
     transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Container */
 .container {
-    max-width: 600px;
+    max-width: 900px;
     margin: auto;
     background: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 60px;
+    border-radius: 50px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
     transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -30,7 +29,6 @@ h1 {
     color: #2ecc71;
     margin: 0;
 }
-
 /* Dark Mode Button */
 #darkModeToggle {
     background: none;
