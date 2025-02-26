@@ -4,32 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tweet Sera</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <div class="container">
-        <!-- Header -->
-        <div class="header">
+        <header>
             <h1>Tweet Sera</h1>
             <button id="darkModeToggle">🌙</button>
-        </div>
-
-        <!-- Tweet Input -->
-        <input type="text" id="usernameInput" placeholder="Enter your username">
+        </header>
         
-        <div class="profile-pic-container">
-            <label for="profilePicInput">
-                <img id="profilePicPreview" src="default-avatar.png" alt="Profile Picture">
-            </label>
+        <div id="tweetBox">
+            <input type="text" id="usernameInput" placeholder="Enter your username">
             <input type="file" id="profilePicInput" accept="image/*">
+            <textarea id="tweetInput" placeholder="What's happening?" maxlength="280"></textarea>
+            <span id="charCount">0/280</span>
+            <button id="tweetButton">Tweet</button>
         </div>
-        
-        <textarea id="tweetInput" placeholder="What's happening?" maxlength="280"></textarea>
-        <div id="charCount">0/280</div>
-        <button id="tweetButton">Tweet</button>
 
-        <!-- Tweets Section -->
         <ul id="tweetsList"></ul>
     </div>
 
