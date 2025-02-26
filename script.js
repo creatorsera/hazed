@@ -1,70 +1,56 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const profilePicInput = document.getElementById('profilePicInput');
-    const profilePic = document.getElementById('profilePic');
-    const tweetButton = document.getElementById('tweetButton');
-    const tweetInput = document.getElementById('tweetInput');
-    const tweetsList = document.getElementById('tweetsList');
+document.addEventListener("DOMContentLoaded", function () {
+    const tweetButton = document.getElementById("tweetButton");
+    const tweetsList = document.getElementById("tweetsList");
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    const tweetInput = document.getElementById("tweetInput");
+    const charCount = document.getElementById("charCount");
+    const profilePicInput = document.getElementById("profilePicInput");
+    const profilePicPreview = document.getElementById("profilePicPreview");
 
-    // Dark Mode Toggle
-    darkModeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    });
-
-    // Load Dark Mode Preference
-    if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark-mode');
+    // Load dark mode preference
+    if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
     }
 
-    // Profile Picture Upload
-    profilePicInput.addEventListener('change', function() {
-        const file = this.files[0];
+    darkModeToggle.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", document.body.classList.contains("dark-mode") ? "enabled" : "disabled");
+    });
+
+    tweetInput.addEventListener("input", function () {
+        charCount.textContent = `${tweetInput.value.length}/280`;
+        charCount.style.color = tweetInput.value.length > 280 ? "red" : "gray";
+    });
+
+    profilePicInput.addEventListener("change", function () {
+        const file = profilePicInput.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = () => {
-                profilePic.src = reader.result;
+            reader.onload = function (e) {
+                profilePicPreview.src = e.target.result;
             };
             reader.readAsDataURL(file);
         }
     });
 
-    // Post Tweet
-    tweetButton.addEventListener('click', () => {
+    tweetButton.addEventListener("click", function () {
+        const usernameInput = document.getElementById("usernameInput");
+        const username = usernameInput.value.trim();
         const tweetText = tweetInput.value.trim();
-        if (tweetText.length > 0) {
-            const tweetItem = document.createElement('li');
-            tweetItem.classList.add('tweet');
 
+        if (username && tweetText) {
+            const tweetItem = document.createElement("li");
+            tweetItem.className = "tweet";
             tweetItem.innerHTML = `
-                <span>${tweetText}</span>
-                <button class="edit-button">Edit</button>
-                <button class="delete-button">Delete</button>
+                <img src="${profilePicPreview.src}" class="profile-pic">
+                <div class="tweet-content">
+                    <strong>${username}</strong>
+                    <p>${tweetText}</p>
+                </div>
             `;
-
             tweetsList.prepend(tweetItem);
-
-            // Edit Tweet
-            tweetItem.querySelector('.edit-button').addEventListener('click', function() {
-                const newText = prompt("Edit your tweet:", tweetText);
-                if (newText) {
-                    tweetItem.querySelector('span').textContent = newText;
-                }
-            });
-
-            // Delete Tweet
-            tweetItem.querySelector('.delete-button').addEventListener('click', function() {
-                tweetItem.remove();
-            });
-
-            tweetInput.value = '';
+            tweetInput.value = "";
+            charCount.textContent = "0/280";
         }
-    });
-
-    // Character Counter
-    tweetInput.addEventListener('input', () => {
-        const charCount = document.getElementById('charCount');
-        charCount.textContent = `${tweetInput.value.length}/280`;
-        charCount.style.color = tweetInput.value.length > 280 ? 'red' : '';
     });
 });
