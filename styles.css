@@ -1,136 +1,114 @@
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #f5f8fa;
-    color: #48c9b0;
+    color: #14171a;
     margin: 0;
-    padding: 120px;
-    transition: background 0.3s ease, color 0.3s ease;
-}
-
-/* Container */
-.container {
-    max-width: 900px;
-    margin: auto;
-    background: white;
-    padding: 60px;
-    border-radius: 50px;
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Header */
-header {
+    padding: 20px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    max-width: 600px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
+    text-align: center;
     color: #2ecc71;
-    margin: 0;
-}
-/* Dark Mode Button */
-#darkModeToggle {
-    background: #273746;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
 }
 
-/* Input Fields */
-input[type="text"], textarea, input[type="file"] {
+/* Profile Upload */
+.profile-upload {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.profile-upload img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #2ecc71;
+}
+
+.profile-upload input {
+    display: none;
+}
+
+/* Tweet Input */
+input, textarea {
     width: 100%;
     border: 1px solid #e1e8ed;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 10px;
     font-size: 16px;
     margin-bottom: 10px;
-    transition: border-color 0.3s ease;
 }
 
-input:focus, textarea:focus {
-    border-color: #2ecc71;
-    outline: none;
-}
-
-/* Character Counter */
-#charCount {
-    font-size: 14px;
-    float: right;
-    color: gray;
-}
-
-/* Tweet Button */
 button {
     width: 100%;
     padding: 10px;
     background-color: #2ecc71;
     color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background 0.3s;
 }
 
 button:hover {
     background-color: #27ae60;
 }
 
-/* Tweets List */
+/* Tweet Card */
 .tweet {
-    background: #e1e8ed;
-    margin: 10px 0;
-    padding: 15px;
-    border-radius: 10px;
-    position: relative;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
 }
 
-/* Profile Pic */
-.profile-pic {
+.tweet img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    object-fit: cover;
     margin-right: 10px;
 }
 
-/* Verified Badge */
-.verified {
-    color: #1DA1F2;
-    font-size: 16px;
-    margin-left: 5px;
+.tweet .tweet-content {
+    flex: 1;
 }
 
-/* Dark Mode */
-.dark-mode {
-    background-color: #15202b;
-    color: #ffffff;
+.tweet .tweet-buttons {
+    display: flex;
+    gap: 5px;
 }
 
-.dark-mode .container {
-    background-color: #192734;
-    box-shadow: none;
+.tweet .like-button.liked {
+    color: red;
+    transform: scale(1.1);
 }
 
-.dark-mode input, 
-.dark-mode textarea {
-    background-color: #22303c;
-    color: white;
-    border: 1px solid #3a5060;
+/* Hashtags & Mentions */
+.mention {
+    color: #3498db;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.dark-mode .tweet {
-    background: #22303c;
-}
-
-.dark-mode button {
-    background-color: #1DA1F2;
-}
-
-.dark-mode button:hover {
-    background-color: #0d8de0;
+.hashtag {
+    color: #e0245e;
+    font-weight: bold;
+    cursor: pointer;
 }
