@@ -31,7 +31,7 @@ h1 {
 }
 /* Dark Mode Button */
 #darkModeToggle {
-    background: none;
+    background: #273746;
     border: none;
     font-size: 20px;
     cursor: pointer;
