@@ -5,39 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tweet Sera</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-
-    <!-- Dark Mode Toggle -->
-    <button id="darkModeToggle">🌙</button>
-
     <div class="container">
-        <h1>Tweet Sera</h1>
+        <header>
+            <h1>Tweet Sera</h1>
+            <button id="darkModeToggle">🌙</button>
+        </header>
 
-        <!-- Profile Picture Picker -->
-        <div class="profile-pic-container">
+        <!-- Profile Picture Upload -->
+        <div class="profile-section">
             <label for="profilePicInput">
-                <img id="profilePicPreview" src="default-avatar.png" class="profile-pic">
+                <img id="profilePic" src="default-avatar.png" alt="Profile Picture">
             </label>
             <input type="file" id="profilePicInput" accept="image/*">
+            <input type="text" id="usernameInput" placeholder="Enter your username">
         </div>
 
-        <!-- Tweet Input Area -->
-        <input type="text" id="usernameInput" placeholder="Enter your username">
-        <textarea id="tweetInput" placeholder="What's happening?"></textarea>
-
-        <!-- Emoji Picker -->
-        <button id="emojiButton">😊</button>
-        <div id="emojiPicker" class="hidden"></div>
-
+        <!-- Tweet Input Section -->
+        <textarea id="tweetInput" placeholder="What's happening?" maxlength="280"></textarea>
+        <span id="charCount">0/280</span>
         <button id="tweetButton">Tweet</button>
 
-        <!-- Tweets Container -->
-        <div id="tweetsContainer">
-            <ul id="tweetsList"></ul>
-        </div>
+        <!-- Tweet List -->
+        <ul id="tweetsList"></ul>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
