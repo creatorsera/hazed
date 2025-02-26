@@ -4,36 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tweet Sera</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Dark Mode Toggle -->
+    <button id="darkModeToggle">🌙</button>
+
     <div class="container">
-        <header>
-            <h1>Tweet Sera</h1>
-            <button id="darkModeToggle">🌙</button>
-        </header>
-        
-        <div id="tweetBox">
-            <input type="text" id="usernameInput" placeholder="Enter your username">
+        <h1>Tweet Sera</h1>
+
+        <!-- Profile Picture Picker -->
+        <div class="profile-pic-container">
+            <label for="profilePicInput">
+                <img id="profilePicPreview" src="default-avatar.png" class="profile-pic">
+            </label>
             <input type="file" id="profilePicInput" accept="image/*">
-            <textarea id="tweetInput" placeholder="What's happening?" maxlength="280"></textarea>
-            <span id="charCount">0/280</span>
-            <button id="tweetButton">Tweet</button>
         </div>
 
-        <ul id="tweetsList"></ul>
+        <!-- Tweet Input Area -->
+        <input type="text" id="usernameInput" placeholder="Enter your username">
+        <textarea id="tweetInput" placeholder="What's happening?"></textarea>
+
+        <!-- Emoji Picker -->
+        <button id="emojiButton">😊</button>
+        <div id="emojiPicker" class="hidden"></div>
+
+        <button id="tweetButton">Tweet</button>
+
+        <!-- Tweets Container -->
+        <div id="tweetsContainer">
+            <ul id="tweetsList"></ul>
+        </div>
     </div>
 
     <script src="script.js"></script>
-<div class="profile-pic-container">
-    <label for="profilePicInput">
-        <img id="profilePicPreview" src="default-avatar.png" class="profile-pic">
-    </label>
-    <input type="file" id="profilePicInput" accept="image/*">
-</div>
-<button id="emojiButton">😓</button>
-<div id="emojiPicker" class="hidden"></div>
-
-
 </body>
 </html>
