@@ -1,14 +1,12 @@
 /* General Styles */
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #f5f8fa;
     color: #14171a;
     margin: 0;
     padding: 20px;
-    transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Container */
 .container {
     max-width: 600px;
     margin: auto;
@@ -16,53 +14,52 @@ body {
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Header */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 h1 {
-    color: #2ecc71;
-    margin: 0;
+    text-align: center;
+    color: #2ecc71; /* Parrot green */
 }
 
-/* Dark Mode Button */
-#darkModeToggle {
-    background: none;
-    border: none;
-    font-size: 20px;
+/* Profile Picture Picker */
+.profile-pic-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
     cursor: pointer;
+    border: 2px solid #2ecc71;
+}
+
+#profilePicInput {
+    display: none;
 }
 
 /* Input Fields */
-input[type="text"], textarea, input[type="file"] {
+input[type="text"],
+textarea {
     width: 100%;
     border: 1px solid #e1e8ed;
     border-radius: 20px;
     padding: 10px;
     font-size: 16px;
     margin-bottom: 10px;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s;
 }
 
-input:focus, textarea:focus {
+input[type="text"]:focus,
+textarea:focus {
     border-color: #2ecc71;
     outline: none;
 }
 
-/* Character Counter */
-#charCount {
-    font-size: 14px;
-    float: right;
-    color: gray;
-}
-
-/* Tweet Button */
+/* Buttons */
 button {
     width: 100%;
     padding: 10px;
@@ -79,86 +76,12 @@ button:hover {
     background-color: #27ae60;
 }
 
-/* Tweets List */
-.tweet {
-    background: #e1e8ed;
-    margin: 10px 0;
-    padding: 15px;
-    border-radius: 10px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-/* Profile Pic */
-.profile-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px;
-}
-
-/* Verified Badge */
-.verified {
-    color: #1DA1F2;
-    font-size: 16px;
-    margin-left: 5px;
-}
-
-/* Dark Mode */
-.dark-mode {
-    background-color: #15202b;
-    color: #ffffff;
-}
-
-.dark-mode .container {
-    background-color: #192734;
-    box-shadow: none;
-}
-
-.dark-mode input, 
-.dark-mode textarea {
-    background-color: #22303c;
-    color: white;
-    border: 1px solid #3a5060;
-}
-
-.dark-mode .tweet {
-    background: #22303c;
-}
-
-.dark-mode button {
-    background-color: #1DA1F2;
-}
-
-.dark-mode button:hover {
-    background-color: #0d8de0;
-}
-.profile-pic-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-
-.profile-pic {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    cursor: pointer;
-    border: 2px solid #2ecc71; /* Green border */
-}
-
-#profilePicInput {
-    display: none;
-}
+/* Dark Mode Toggle */
 #darkModeToggle {
     position: fixed;
     top: 15px;
     right: 15px;
-    background: #2ecc71; /* Green */
+    background: #2ecc71;
     color: white;
     border: none;
     padding: 10px;
@@ -171,7 +94,7 @@ button:hover {
     background: #27ae60;
 }
 
-/* Dark mode styles */
+/* Dark Mode Styling */
 .dark-mode {
     background: #121212;
     color: white;
@@ -185,6 +108,8 @@ button:hover {
 .dark-mode button {
     background: #2ecc71;
 }
+
+/* Emoji Picker */
 #emojiButton {
     background: none;
     border: none;
@@ -205,4 +130,44 @@ button:hover {
 
 .hidden {
     display: none;
+}
+
+/* Tweet Styles */
+#tweetsContainer {
+    margin-top: 20px;
+}
+
+#tweetsList {
+    list-style-type: none;
+    padding: 0;
+}
+
+.tweet {
+    background: #e1e8ed;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.edit-button, .delete-button {
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.edit-button:hover {
+    background-color: #2980b9;
+}
+
+.delete-button {
+    background-color: #e74c3c;
+}
+
+.delete-button:hover {
+    background-color: #c0392b;
 }
